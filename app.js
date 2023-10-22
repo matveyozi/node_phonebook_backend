@@ -2,7 +2,17 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 
-const contactsRouter = require('./routes/api/contacts')
+const dotenv = require('dotenv');
+
+dotenv.config({
+  path:
+    process.env.NODE_ENV === 'production'
+      ? './enviroments/production.env'
+      : './enviroments/.env',
+});
+
+const contactsRouter = require('./routes/api/contactsRoutes')
+
 
 const app = express()
 
